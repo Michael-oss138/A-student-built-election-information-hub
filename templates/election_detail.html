@@ -6,10 +6,30 @@
 </head>
 <body>
     <h1>{{ election.name }}</h1>
+
     <p><strong>Scope:</strong> {{ election.scope }}</p>
     <p><strong>Start Date:</strong> {{ election.start_date }}</p>
     <p><strong>End Date:</strong> {{ election.end_date }}</p>
     <p>{{ election.description }}</p>
+
+    <hr>
+
+    <h2>Candidates</h2>
+
+    {% if election.candidates %}
+        <ul>
+            {% for candidate in election.candidates %}
+                <li>
+                    <strong>{{ candidate.name }}</strong><br>
+                    Position: {{ candidate.position }}<br>
+                    {{ candidate.manifesto }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No candidates listed yet.</p>
+    {% endif %}
+
     <a href="/">Back to home</a>
 </body>
 </html>

@@ -21,6 +21,15 @@ class Election(db.Model):
     start_date = db.Column(db.Date, nullable=False)
     end_date = db.Column(db.Date, nullable=False)
 
+class Candidate(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), nullable=False)
+    position = db.Column(db.String(200), nullable=False)
+    manifesto = db.Column(db.Text, nullable=True)
+
+    election_id = db.Column(db.Integer, db.ForeignKey("election.id"), nullable=False)
+    election = db.relationship("Election", backref="candidates")
+    
     def __repr__(self):
         return f"<Election {self.name}>"
 
