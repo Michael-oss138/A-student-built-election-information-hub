@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>A Student Built Election Information Hub</title>
 </head>
 <body>
-    <h1>A Student Built ELection Information Hub</h1>
-    <p>Elections are happening on Campus</p>
+    <h1>A Student Built Election Information Hub</h1>
+
+    {% if elections %}
+        <ul>
+            {% for election in elections %}
+                <li>
+                    <strong>{{ election.name }}</strong> ({{ election.scope }})<br>
+                    {{ election.start_date }} - {{ election.end_date }}<br>
+                    {{ election.description }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No elections available.</p>
+    {% endif %}
 </body>
 </html>
