@@ -33,5 +33,9 @@ def home():
 def dbpath():
     return f"Database file: {db.engine.url}"
 
+@app.route("/elections/<int:election_id>")
+def election_detail(election_id):
+    election = Election.query.get_or_404(election_id)
+    return render_template("election_detail.html", election=election)
 if __name__ == "__main__":
     app.run(debug=True)

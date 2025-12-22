@@ -11,6 +11,7 @@
         <ul>
             {% for election in elections %}
                 <li>
+                    <a href="{{ url_for('election_detail', election_id=election.id) }}">{{ election.name }}</a>
                     <strong>{{ election.name }}</strong> ({{ election.scope }})<br>
                     {{ election.start_date }} - {{ election.end_date }}<br>
                     {{ election.description }}
