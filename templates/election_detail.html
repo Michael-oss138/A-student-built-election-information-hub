@@ -16,19 +16,21 @@
 
     <h2>Candidates</h2>
 
-    {% if election.candidates %}
+{% if positions %}
+    {% for position, candidates in positions.items() %}
+        <h3>{{ position }}</h3>
         <ul>
-            {% for candidate in election.candidates %}
+            {% for candidate in candidates %}
                 <li>
                     <strong>{{ candidate.name }}</strong><br>
-                    Position: {{ candidate.position }}<br>
                     {{ candidate.manifesto }}
                 </li>
             {% endfor %}
         </ul>
-    {% else %}
-        <p>No candidates listed yet.</p>
-    {% endif %}
+    {% endfor %}
+{% else %}
+    <p>No candidates listed yet.</p>
+{% endif %}
 
     <a href="/">Back to home</a>
 </body>
